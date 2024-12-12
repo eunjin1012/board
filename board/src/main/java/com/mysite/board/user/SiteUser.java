@@ -1,14 +1,10 @@
-package com.mysite.board;
-
-import java.time.LocalDateTime;
+package com.mysite.board.user;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,19 +12,17 @@ import lombok.Setter;
 @Setter
 @Entity
 
-public class Answer {
-	
+public class SiteUser {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Long id;
 	
-	@Column(columnDefinition = "TEXT")
-	private String content;
+	@Column(unique = true)
+	private String username;
 	
+	private String password;
 	
-	private LocalDateTime createDate;
-	
-	@ManyToOne
-	private Question question;
+	@Column(unique = true)
+	private String email;
 
 }
